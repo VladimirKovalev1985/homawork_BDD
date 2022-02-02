@@ -5,6 +5,7 @@ import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
+import data.DataHelper;
 
 public class TransferPage {
 
@@ -20,6 +21,11 @@ public class TransferPage {
     }
 
     public DashboardPage transferForm(String sum, DataHelper.CardNumber cardNumber){
+        amount.setValue(sum);
+        from.setValue(String.valueOf(cardNumber));
+        button.click();
+        return new DashboardPage();
+    }
 
     }
-}
+

@@ -4,6 +4,7 @@ import com.codeborne.selenide.SelenideElement;
 import lombok.val;
 
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
@@ -16,6 +17,7 @@ public class DashboardPage {
     private final SelenideElement firstButton = $$("[data-test-id='action-deposit']").first();
     private final SelenideElement secondButton = $$("[data-test-id='action-deposit']").last();
     private final SelenideElement reload = $("[data-test-id='action-reload']");
+    private SelenideElement notification = $("[data-test-id=error-notification]").$(withText("Ошибка"));
 
     public DashboardPage() {
         heading.shouldBe(visible);
@@ -55,6 +57,10 @@ public class DashboardPage {
         return Integer.parseInt(value);
     }
 
+    public SelenideElement getNotificationVisible() {
+        return notification.shouldBe(visible);
 
+
+    }
 }
 
